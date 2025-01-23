@@ -1,4 +1,5 @@
-import 'package:ecommerce_app/feautres/auth/presentation/views/auth_view.dart';
+import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,8 +16,8 @@ class EcommerceApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData(  
+        scaffoldBackgroundColor: AppColors.kScaffoldColor,      
         useMaterial3: true,
       ),
       home:const AuthView()
