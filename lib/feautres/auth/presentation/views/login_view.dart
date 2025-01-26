@@ -1,9 +1,15 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class AuthView extends StatelessWidget {
+class AuthView extends StatefulWidget {
   const AuthView({super.key});
 
+  @override
+  State<AuthView> createState() => _AuthViewState();
+}
+
+class _AuthViewState extends State<AuthView> {
+  bool _isPasswordObscured = true;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -36,13 +42,28 @@ class AuthView extends StatelessWidget {
                 
                const CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,),
                  CustomTextField(label: 'Password',
-                  suffixIcon:  IconButton(icon:const Icon(Icons.visibility_off),
+                 obscureText: _isPasswordObscured,
+                  suffixIcon:  IconButton(icon :  Icon(_isPasswordObscured ? Icons.visibility_off : Icons.visibility),
                  onPressed: (){
-                  
+                    setState(() {
+                      _isPasswordObscured = !_isPasswordObscured;
+                    });
 
                  },),keyboardType: TextInputType.visiblePassword,
-                 obscureText: true,),
-                
+                 ),
+          const SizedBox(height: 20,),
+          Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+           children: [
+              CustomTextButton(text: 'Forget Password ? ',
+              onTap: (){
+
+              }
+              ,),
+           
+           ],
+         )
+
               ],
             ),
           ),
@@ -52,6 +73,29 @@ class AuthView extends StatelessWidget {
         ),
       )
       
+    );
+  }
+}
+
+class CustomTextButton extends StatelessWidget {
+  const CustomTextButton({
+    super.key, this.onTap, required this.text,
+  });
+final void Function()? onTap;
+final String text;
+  @override
+  Widget build(BuildContext context) {
+    return  InkWell(
+      onTap: onTap,
+      child: Text(
+        text ,
+        style: const TextStyle(
+          color: AppColors.kPrimaryColor,
+          fontSize: 18,
+          fontWeight: FontWeight.bold
+        ),
+       
+      ),
     );
   }
 }
