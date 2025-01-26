@@ -11,6 +11,7 @@ class AuthView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 30,),
        const Text('Welcome to our market ',
         style:TextStyle(
           fontSize: 24,
@@ -32,57 +33,15 @@ class AuthView extends StatelessWidget {
             child: Column(
               spacing: 20,
               children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(
-                        width: 2,
-                        color: AppColors.kBordersideColor
-                      )
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide:const BorderSide(
-                        color: AppColors.kBordersideColor
-                      )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(
-                        color: AppColors.kBordersideColor
-                      )
-                    ),
-                  ),
-            
-                ),
                 
-                 TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(
-                        width: 2,
-                        color: AppColors.kBordersideColor
-                      )
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide:const BorderSide(
-                        color: AppColors.kBordersideColor
-                      )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(
-                        color: AppColors.kBordersideColor
-                      )
-                    ),
-                  ),
-            
-                ),
+               const CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,),
+                 CustomTextField(label: 'Password',
+                  suffixIcon:  IconButton(icon:const Icon(Icons.visibility_off),
+                 onPressed: (){
+                  
+
+                 },),keyboardType: TextInputType.visiblePassword,
+                 obscureText: true,),
                 
               ],
             ),
@@ -94,5 +53,53 @@ class AuthView extends StatelessWidget {
       )
       
     );
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
+    super.key, required this.label, this.suffixIcon, required this.keyboardType, this.obscureText = false,
+  });
+final String label;
+final Widget? suffixIcon;
+final TextInputType keyboardType;
+final bool obscureText;
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      validator: (value){
+                    if(value!.isEmpty ){
+                      return 'please enter your password';
+                    }
+                    return null;
+                  },
+     keyboardType:keyboardType,
+     obscuringCharacter: '*',
+     obscureText: obscureText,
+     decoration: InputDecoration(
+       labelText: label,
+       suffixIcon: suffixIcon,
+       border: OutlineInputBorder(
+         borderRadius: BorderRadius.circular(8),
+         borderSide: const BorderSide(
+           width: 2,
+           color: AppColors.kBordersideColor
+         )
+       ),
+       enabledBorder: OutlineInputBorder(
+         borderRadius: BorderRadius.circular(8),
+         borderSide:const BorderSide(
+           color: AppColors.kBordersideColor
+         )
+       ),
+       focusedBorder: OutlineInputBorder(
+         borderRadius: BorderRadius.circular(8),
+         borderSide: const BorderSide(
+           color: AppColors.kBordersideColor
+         )
+       ),
+     ),
+                
+                    );
   }
 }
