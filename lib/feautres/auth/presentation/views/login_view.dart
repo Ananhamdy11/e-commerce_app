@@ -14,66 +14,114 @@ class _AuthViewState extends State<AuthView> {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 30,),
-       const Text('Welcome to our market ',
-        style:TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold
-
-        ) ,
-        ),
-       const SizedBox(height: 20,),
-        Card(
-          margin: const EdgeInsets.all(20),
-          color: AppColors.kWhiteColor,
-          shape:const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(16)
-            )
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 30,),
+                 const Text('Welcome to our market ',
+          style:TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold
+          
+          ) ,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              spacing: 20,
-              children: [
-                
-               const CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,),
-                 CustomTextField(label: 'Password',
-                 obscureText: _isPasswordObscured,
-                  suffixIcon:  IconButton(icon :  Icon(_isPasswordObscured ? Icons.visibility_off : Icons.visibility),
-                 onPressed: (){
-                    setState(() {
-                      _isPasswordObscured = !_isPasswordObscured;
-                    });
-
-                 },),keyboardType: TextInputType.visiblePassword,
-                 ),
-          const SizedBox(height: 20,),
-          Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-           children: [
-              CustomTextButton(text: 'Forget Password ? ',
-              onTap: (){
-
-              }
-              ,),
-           
-           ],
-         )
-
-              ],
+                 const SizedBox(height: 20,),
+          Card(
+            margin: const EdgeInsets.all(20),
+            color: AppColors.kWhiteColor,
+            shape:const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(16)
+              )
             ),
-          ),
-        )
-
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                spacing: 20,
+                children: [
+                  
+                 const CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,),
+                   CustomTextField(label: 'Password',
+                   obscureText: _isPasswordObscured,
+                    suffixIcon:  IconButton(icon :  Icon(_isPasswordObscured ? Icons.visibility_off : Icons.visibility),
+                   onPressed: (){
+                      setState(() {
+                        _isPasswordObscured = !_isPasswordObscured;
+                      });
+          
+                   },),keyboardType: TextInputType.visiblePassword,
+                   ),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+             children: [
+                CustomTextButton(text: 'Forget Password ? ',
+                onTap: (){
+          
+                }
+                ,),
+                
+          
+             
              ],
+           ),
+           CustomRowButton(text: 'Login',onTap: (){},),
+           CustomRowButton(text: 'Login With Goagle ',onTap: (){},),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.center, 
+            children: [
+             const Text('Already have an account ? ',style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18
+              ),),
+              CustomTextButton(text: 'Sign Up',onTap: (){},)
+            ],
+           )
+                ],
+              ),
+            ),
+          )
+          
+               ],
+          ),
         ),
       )
       
     );
+  }
+}
+
+class CustomRowButton extends StatelessWidget {
+  const CustomRowButton({
+    super.key, required this.text, this.onTap,
+
+  });
+final String text;
+final void Function()? onTap;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+           children: [
+             Text(text,
+             style:const TextStyle(
+               fontSize: 20,
+               fontWeight: FontWeight.bold,
+               color: AppColors.kBlackColor,
+    
+             ),),
+             ElevatedButton(onPressed:onTap,
+             style: ElevatedButton.styleFrom(
+               backgroundColor: AppColors.kPrimaryColor,
+               shape: RoundedRectangleBorder(
+                 borderRadius: BorderRadius.circular(16)
+               )
+             ),
+              child: const Icon(Icons.arrow_forward,color: AppColors.kWhiteColor,),
+              )
+             
+           ],
+         );
   }
 }
 
