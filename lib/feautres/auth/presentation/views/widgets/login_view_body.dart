@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/feautres/auth/presentation/views/forget_passsword_view.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_row_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/forget_password_view_body.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -60,7 +62,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
              children: [
                 CustomTextButton(text: 'Forget Password ? ',
                 onTap: (){
-          
+                  NavigatorTo(context,const ForgetPassswordView());
                 }
                 ,),
                 
@@ -91,4 +93,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       );
    
   }
+
+  void NavigatorTo(BuildContext context,Widget view) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> view));
+  }
 }
+

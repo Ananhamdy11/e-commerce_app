@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class AuthView extends StatefulWidget {
 class _AuthViewState extends State<AuthView> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return const Scaffold(
       body:  LoginViewBody(),
     );
   }
