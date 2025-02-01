@@ -4,7 +4,7 @@ import 'package:ecommerce_app/feautres/auth/presentation/views/signup_view.dart'
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_row_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
-import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/signup_view_body.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/main_home_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -63,7 +63,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
              children: [
                 CustomTextButton(text: 'Forget Password ? ',
                 onTap: (){
-                  NavigatorTo(context,const ForgetPassswordView());
+                  navigatorTo(context,const ForgetPassswordView());
                 }
                 ,),
                 
@@ -71,7 +71,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
              
              ],
            ),
-           CustomRowButton(text: 'Login',onTap: (){},),
+           CustomRowButton(text: 'Login',onTap: (){
+              navigatorTo(context,const MainHomeView());
+           },),
            CustomRowButton(text: 'Login With Goagle ',onTap: (){},),
            Row(
             mainAxisAlignment: MainAxisAlignment.center, 
@@ -84,7 +86,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                ),
              ),
               CustomTextButton(text: 'Sign Up',onTap: (){
-                NavigatorTo(context,const SignupView());
+                navigatorTo(context,const SignupView());
               },)
             ],
            )
@@ -101,7 +103,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
    
   }
 
-  void NavigatorTo(BuildContext context,Widget view) {
+  void navigatorTo(BuildContext context,Widget view) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context)=> view));
   }
 }

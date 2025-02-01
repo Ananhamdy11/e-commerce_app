@@ -11,9 +11,9 @@ class ForgetPasswordViewBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-            child: const Text('Enter Your Email to Reset Password',
+          const Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+            child:  Text('Enter Your Email to Reset Password',
             
             style: TextStyle(
               
