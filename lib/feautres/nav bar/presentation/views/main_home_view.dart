@@ -1,11 +1,22 @@
+
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/favorite_view.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/home_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/main_home_view_body.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/profile_view.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/store_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainHomeView extends StatelessWidget {
   const MainHomeView({super.key});
+final List<Widget> views = const[
+ HomeView(),
+  StoreView(),
+  FavoriteView(),
+  ProfileView(),
 
+];
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -14,9 +25,12 @@ class MainHomeView extends StatelessWidget {
         decoration:const BoxDecoration(
           color: AppColors.kWhiteColor
         ),
-        child:const Padding(
-          padding: EdgeInsets.symmetric(vertical: 5,horizontal: 5),
+        child: Padding(
+          padding:const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
           child: GNav(
+            onTabChange: (value){
+                       
+                        },
             rippleColor: AppColors.kPrimaryColor,
             hoverColor: AppColors.kPrimaryColor,
             curve: Curves.easeOutExpo,
@@ -25,7 +39,7 @@ class MainHomeView extends StatelessWidget {
             iconSize: 24,
             tabBackgroundColor: AppColors.kPrimaryColor,
             color: Colors.grey,
-            tabs: [
+            tabs:const [
             GButton(
               icon: Icons.home,
               text: 'Home',
