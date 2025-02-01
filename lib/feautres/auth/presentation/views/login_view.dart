@@ -1,14 +1,14 @@
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 
-class AuthView extends StatefulWidget {
-  const AuthView({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
 
   @override
-  State<AuthView> createState() => _AuthViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _AuthViewState extends State<AuthView> {
+class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

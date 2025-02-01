@@ -1,20 +1,17 @@
 import 'package:ecommerce_app/core/app_colors.dart';
-import 'package:ecommerce_app/feautres/auth/presentation/views/forget_passsword_view.dart';
-import 'package:ecommerce_app/feautres/auth/presentation/views/signup_view.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_row_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
-import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/signup_view_body.dart';
 import 'package:flutter/material.dart';
 
-class LoginViewBody extends StatefulWidget {
-  const LoginViewBody({super.key});
+class SignupViewBody extends StatefulWidget {
+  const SignupViewBody({super.key});
 
   @override
-  State<LoginViewBody> createState() => _LoginViewBodyState();
+  State<SignupViewBody> createState() => _SignupViewBodyState();
 }
 
-class _LoginViewBodyState extends State<LoginViewBody> {
+class _SignupViewBodyState extends State<SignupViewBody> {
     bool _isPasswordObscured = true;
 
   @override
@@ -46,7 +43,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               child: Column(
                 spacing: 20,
                 children: [
-                  
+                  const CustomTextField(label: 'Name', keyboardType: TextInputType.text),
                  const CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,),
                    CustomTextField(label: 'Password',
                    obscureText: _isPasswordObscured,
@@ -58,37 +55,25 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           
                    },),keyboardType: TextInputType.visiblePassword,
                    ),
-            Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-             children: [
-                CustomTextButton(text: 'Forget Password ? ',
-                onTap: (){
-                  NavigatorTo(context,const ForgetPassswordView());
-                }
-                ,),
-                
-          
-             
-             ],
-           ),
-           CustomRowButton(text: 'Login',onTap: (){},),
-           CustomRowButton(text: 'Login With Goagle ',onTap: (){},),
-           Row(
+       
+           CustomRowButton(text: 'SignUp',onTap: (){},),
+           CustomRowButton(text: 'SignUp With Goagle ',onTap: (){},),
+                    Row(
             mainAxisAlignment: MainAxisAlignment.center, 
             children: [
              const Text(
-               "Don't have any account?",
+               "Already have an account ? ",
                style: TextStyle(
                  fontWeight: FontWeight.bold,
                  fontSize: 18,
                ),
              ),
-              CustomTextButton(text: 'Sign Up',onTap: (){
-                NavigatorTo(context,const SignupView());
+              CustomTextButton(text: 'Login',onTap: (){
+                Navigator.pop(context);
               },)
             ],
            )
-                
+            
                 ],
               ),
             ),
@@ -101,7 +86,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
    
   }
 
-  void NavigatorTo(BuildContext context,Widget view) {
+  void navigatorTo(BuildContext context,Widget view) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context)=> view));
   }
 }

@@ -20,7 +20,7 @@ class EcommerceApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.kScaffoldColor,      
         useMaterial3: true,
       ),
-      home:const AuthView()
+      home:const LoginView()
     );
   }
 }
