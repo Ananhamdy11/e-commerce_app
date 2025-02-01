@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_search_field.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -5,10 +7,12 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child:  Column(
-        children: [
-          Text('Home View'),
+    return  Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: ListView(
+        children:  [
+          CustomSearchField(),
+          
         ],
       ),
     );
