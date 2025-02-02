@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/categories_list_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_search_field.dart';
 import 'package:flutter/material.dart';
@@ -36,11 +37,11 @@ class HomeView extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Column(
+            child:  Column(
               children: [
                 Stack(
                   children: [
-                    ClipRRect(
+                   const ClipRRect(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(16),
                         bottomLeft: Radius.circular(16),
@@ -51,6 +52,28 @@ class HomeView extends StatelessWidget {
                             'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996'),
                       ),
                     ),
+                    Positioned(
+                      child: Container(
+                        alignment: Alignment.center,
+                         width:70,
+                        height: 35,
+                        decoration: const BoxDecoration(
+                          color: AppColors.kPrimaryColor,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(16),
+                            bottomRight: Radius.circular(16),
+                          )
+                        ),
+                        child: const Text(
+                          "10% off",
+                        style: TextStyle(
+                          color: AppColors.kWhiteColor,
+                          
+                        ),
+                        ),
+
+                    ),),
+                  
                   ],
                 )
               ],
