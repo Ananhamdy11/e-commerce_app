@@ -35,9 +35,9 @@ class MainHomeView extends StatelessWidget {
                     rippleColor: AppColors.kPrimaryColor,
                     hoverColor: AppColors.kPrimaryColor,
                     curve: Curves.easeOutExpo,
-                    gap: 3,
+                    gap: 1,
                     activeColor: AppColors.kWhiteColor,
-                    iconSize: 24,
+                    iconSize: 20,
                     tabBackgroundColor: AppColors.kPrimaryColor,
                     color: Colors.grey,
                     tabs: const [

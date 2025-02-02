@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/core/helper/widgets/custom_evb.dart';
 import 'package:flutter/material.dart';
 
 class CustomRowButton extends StatelessWidget {
@@ -20,17 +21,10 @@ final void Function()? onTap;
                color: AppColors.kBlackColor,
     
              ),),
-             ElevatedButton(onPressed:onTap,
-             style: ElevatedButton.styleFrom(
-               backgroundColor: AppColors.kPrimaryColor,
-               shape: RoundedRectangleBorder(
-                 borderRadius: BorderRadius.circular(16)
-               )
-             ),
-              child: const Icon(Icons.arrow_forward,color: AppColors.kWhiteColor,),
-              )
+             CustomEVB(onTap: onTap, widget: const Icon(Icons.arrow_forward,color: AppColors.kWhiteColor,),)
              
            ],
          );
   }
 }
+
