@@ -7,24 +7,57 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(10.0),
-      child:  ListView(
-        children:[
-         const CustomSearchField(),
-          const SizedBox(height: 20,),
+      child: ListView(
+        children: [
+          const CustomSearchField(),
+          const SizedBox(
+            height: 15,
+          ),
           Image.asset('assets/images/buy.jpg'),
-          const SizedBox(height: 20,),
-          const Text('Popular Categories',style: TextStyle(
-            fontSize: 20,
-          ),),
-         const SizedBox(height: 20,),
-         const CategoriesList(),
-
-
+          const SizedBox(
+            height: 15,
+          ),
+          const Text(
+            'Popular Categories',
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          const CategoriesList(),
+          const SizedBox(
+            height: 15,
+          ),
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Column(
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(16),
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                      child: Image(
+                        image: NetworkImage(
+                            'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996'),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
