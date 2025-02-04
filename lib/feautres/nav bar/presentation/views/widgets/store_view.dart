@@ -23,7 +23,7 @@ class StoreView extends StatelessWidget {
            SizedBox(height:20 ,),
           CustomSearchField(),
            SizedBox(height:20 ,),
-           ProductList()
+           ProductList(shrinkWrap: true,)
 
         ],
       ),

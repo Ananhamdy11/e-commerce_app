@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({
-    super.key,
+    super.key,  this.shrinkWrap, this.physics,
   });
-
+final bool? shrinkWrap;
+final ScrollPhysics? physics;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: shrinkWrap?? true,
+      physics: physics?? const NeverScrollableScrollPhysics(),
       itemCount: 10,
       itemBuilder: (BuildContext context, int index) {
         return const CardProuduct();
