@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/core/helper/widgets/product_list.dart';
-import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_search_field.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteView extends StatelessWidget {

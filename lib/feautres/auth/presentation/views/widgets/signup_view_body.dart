@@ -86,8 +86,6 @@ class _SignupViewBodyState extends State<SignupViewBody> {
    
   }
 
-  void navigatorTo(BuildContext context,Widget view) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> view));
-  }
+ 
 }
 

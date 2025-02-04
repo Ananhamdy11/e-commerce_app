@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_card_row_button.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/edit_name_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
@@ -40,7 +42,9 @@ class ProfileView extends StatelessWidget {
                       CustomCardRowButton(
                         icon: Icons.person,
                         text: 'Edit Name',
-                        onTap: (){},
+                        onTap: (){
+                          navigatorTo(context,const EditNameViewBody());
+                        },
                       ),
                       const SizedBox(height: 10,),
                        CustomCardRowButton(

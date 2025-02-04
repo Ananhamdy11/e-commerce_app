@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/forget_passsword_view.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/signup_view.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_row_button.dart';
@@ -103,8 +104,4 @@ class _LoginViewBodyState extends State<LoginViewBody> {
    
   }
 
-  void navigatorTo(BuildContext context,Widget view) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> view));
-  }
 }
-
