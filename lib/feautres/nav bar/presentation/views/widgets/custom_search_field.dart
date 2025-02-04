@@ -19,9 +19,15 @@ class CustomSearchField extends StatelessWidget {
      decoration: InputDecoration(
        label:const Text( 'Search in Market....') ,
           suffixIcon: ElevatedButton.icon(
+            
             label:const Icon(Icons.search,color: AppColors.kWhiteColor,) ,
            onPressed: (){},
            style: ButtonStyle(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
             backgroundColor: WidgetStateProperty.all(AppColors.kPrimaryColor),
                       ),
           ),
