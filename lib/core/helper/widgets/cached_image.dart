@@ -11,6 +11,9 @@ final String url;
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl:url,
+      fit: BoxFit.cover,
+      height: 250,
+      width: double.infinity,
       placeholder: (context, url) => const SizedBox(
         height: 200.0,
         child: Center(

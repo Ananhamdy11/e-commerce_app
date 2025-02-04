@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/product_card.dart';
+import 'package:ecommerce_app/feautres/product_details/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 
 class ProductList extends StatelessWidget {
@@ -14,7 +16,9 @@ final ScrollPhysics? physics;
       physics: physics?? const NeverScrollableScrollPhysics(),
       itemCount: 10,
       itemBuilder: (BuildContext context, int index) {
-        return const CardProuduct();
+        return  CardProuduct(onTap:() {
+          navigatorTo(context, const ProductDetailsView());
+        },);
       },
     );
   }
