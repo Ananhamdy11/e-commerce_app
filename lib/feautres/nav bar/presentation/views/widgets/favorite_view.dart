@@ -21,8 +21,6 @@ class FavoriteView extends StatelessWidget {
                        ),
            ),
            SizedBox(height:20 ,),
-          CustomSearchField(),
-           SizedBox(height:20 ,),
            ProductList()
 
         ],
