@@ -1,10 +1,15 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: "https://bszoqyenpznebcmhnmge.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzem9xeWVucHpuZWJjbWhubWdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg5NjEwNTIsImV4cCI6MjA1NDUzNzA1Mn0.RC6-JdeZcJeU5UnpnXvnazTOuzeYP4iuWzfytd6CaCY",
+  );
   runApp(const EcommerceApp());
-  
 }
 
 class EcommerceApp extends StatelessWidget {
@@ -14,14 +19,12 @@ class EcommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(  
-        scaffoldBackgroundColor: AppColors.kScaffoldColor,      
-        useMaterial3: true,
-      ),
-      home:const LoginView()
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.kScaffoldColor,
+          useMaterial3: true,
+        ),
+        home: const LoginView());
   }
 }
-
