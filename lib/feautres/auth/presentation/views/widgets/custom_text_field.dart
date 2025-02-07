@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    super.key, required this.label, this.suffixIcon, required this.keyboardType, this.obscureText = false,
+    super.key, required this.label, this.suffixIcon, required this.keyboardType, this.obscureText = false,  this.controller,
   });
 final String label;
 final Widget? suffixIcon;
 final TextInputType keyboardType;
 final bool obscureText;
+final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       validator: (value){
                     if(value!.isEmpty ){
                       return 'please enter your password';
