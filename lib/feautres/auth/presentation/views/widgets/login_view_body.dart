@@ -28,6 +28,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
    return BlocConsumer<AuthentacationCubit, AuthentacationState>(
      listener: (context, state) {
+       if(state is LoginSuccess){
+        showMsg(context, 'Login Success');
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const MainHomeView()));
+      }
       if (state is LoginFailure) {
         showMsg(context, state.message);
       }
