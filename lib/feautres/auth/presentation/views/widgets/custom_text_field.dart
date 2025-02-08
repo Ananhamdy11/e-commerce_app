@@ -16,7 +16,7 @@ final TextEditingController? controller;
       controller: controller,
       validator: (value){
                     if(value!.isEmpty ){
-                      return 'please enter your password';
+                      return 'this field is required';
                     }
                     return null;
                   },
