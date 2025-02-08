@@ -30,6 +30,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
         showMsg(context, 'SignUp Success');
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LoginView()));
       }if (state is SignUpFailure) {
+        print(state.message);
          showMsg(context, state.message);
       }
     },
