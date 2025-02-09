@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -14,6 +15,7 @@ class AuthentacationCubit extends Cubit<AuthentacationState> {
     emit(LoginLoading());
     try {
       await supabase.auth.signInWithPassword(password: password, email: email);
+      await GetUserData();
       emit(LoginSuccess());
     } on AuthApiException catch (e) {
       log(e.toString());
@@ -32,6 +34,7 @@ class AuthentacationCubit extends Cubit<AuthentacationState> {
     try {
       await supabase.auth.signUp(password: password, email: email);
       await addUserData(name: name, email: email);
+      await GetUserData();
       emit(SignUpSuccess());
     } on AuthApiException catch (e) {
       log(e.toString());
@@ -73,6 +76,7 @@ Future<AuthResponse> googleSignIn() async {
       accessToken: accessToken,
     );
     await addUserData(name: googleUser!.displayName!, email: googleUser!.email);
+    await GetUserData();
     emit(GoogleSignInSuccess());
     return response;
   }
@@ -117,6 +121,23 @@ Future<void> addUserData({required String name, required String email })async{
    
  }
 }
+UserDataModel? userDataModel;
 
+Future<void> GetUserData()async{
+emit(GetUserDataLoading());
+try {
+  final data = await supabase
+  .from('users')
+  .select().eq("id", supabase.auth.currentUser!.id);
+  userDataModel = UserDataModel(userId: data[0]["id"], name: data[0]["name"], email: data[0]["email"]);
+  log(data.toString());
+  emit(GetUserDataSuccess());
+
+} catch (e) {
+  log(e.toString());
+  emit(GetUserDataFailure());
+}
+}
+ 
 
 }

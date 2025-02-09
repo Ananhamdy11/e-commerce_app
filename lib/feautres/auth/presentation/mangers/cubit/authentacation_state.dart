@@ -35,4 +35,9 @@ final class AddUserDataLoading extends AuthentacationState{}
 final class AddUserDataSuccess extends AuthentacationState{}
 final class AddUserDataFailure extends AuthentacationState{}
 
+final class GetUserDataLoading extends AuthentacationState{}
+final class GetUserDataSuccess extends AuthentacationState{}
+final class GetUserDataFailure extends AuthentacationState{}
+
+
 

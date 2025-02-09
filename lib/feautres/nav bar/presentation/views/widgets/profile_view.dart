@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_card_row_button.dart';
@@ -20,6 +21,7 @@ class ProfileView extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        UserDataModel cubit = context.read<AuthentacationCubit>().userDataModel!;
         return state is LogOutLoading ? const Center(child:  CircularProgressIndicator(),) :  Center(
         child: SizedBox(
           height: MediaQuery.of(context).size.height*0.7,
@@ -43,11 +45,11 @@ class ProfileView extends StatelessWidget {
                           child: Icon(Icons.person,size: 50,),
                         ),
                         const SizedBox(height: 10,),
-                         const Text('User Name',style: TextStyle(
+                          Text(cubit.name,style: const TextStyle(
                           fontWeight: FontWeight.bold
                         ),),
                          const SizedBox(height: 10,),
-                         const Text('Your Email'),
+                          Text(cubit.email),
                          const SizedBox(height: 10,),
           
                         CustomCardRowButton(
