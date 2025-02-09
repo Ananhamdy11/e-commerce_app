@@ -31,5 +31,8 @@ final class ResetPasswordLoading extends AuthentacationState{}
 final class ResetPasswordSuccess extends AuthentacationState{}
 final class ResetPasswordFailure extends AuthentacationState{}
 
+final class AddUserDataLoading extends AuthentacationState{}
+final class AddUserDataSuccess extends AuthentacationState{}
+final class AddUserDataFailure extends AuthentacationState{}
 
 

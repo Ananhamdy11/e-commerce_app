@@ -71,9 +71,19 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   child: Column(
                     spacing: 20,
                     children: [
-                      const CustomTextField(label: 'Name', keyboardType: TextInputType.text),
-                     const CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,),
-                       CustomTextField(label: 'Password',
+                       CustomTextField(
+                        label: 'Name', 
+                        keyboardType: TextInputType.text,
+                        controller: nameController,
+                        ),
+                      CustomTextField(
+                        label:'Email' ,
+                        keyboardType: TextInputType.emailAddress,
+                        controller: emailController,
+                        ),
+                       CustomTextField(
+                        label: 'Password',
+                        controller: passwordController,
                        obscureText: _isPasswordObscured,
                         suffixIcon:  IconButton(icon :  Icon(_isPasswordObscured ? Icons.visibility_off : Icons.visibility),
                        onPressed: (){

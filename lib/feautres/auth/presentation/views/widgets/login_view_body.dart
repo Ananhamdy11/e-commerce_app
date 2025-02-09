@@ -71,7 +71,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                      spacing: 20,
                      children: [
                        
-                       CustomTextField(label:'Email' ,keyboardType: TextInputType.emailAddress,controller: emailController,),
+                       CustomTextField(
+                        
+                        label:'Email' ,keyboardType: TextInputType.emailAddress,controller: emailController,),
                         CustomTextField(label: 'Password',
                         obscureText: _isPasswordObscured,
                          suffixIcon:  IconButton(icon :  Icon(_isPasswordObscured ? Icons.visibility_off : Icons.visibility),
