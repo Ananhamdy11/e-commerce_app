@@ -72,6 +72,7 @@ Future<AuthResponse> googleSignIn() async {
       idToken: idToken,
       accessToken: accessToken,
     );
+    await addUserData(name: googleUser!.displayName!, email: googleUser!.email);
     emit(GoogleSignInSuccess());
     return response;
   }
@@ -104,7 +105,7 @@ Future<void> addUserData({required String name, required String email })async{
  try {
    await supabase
     .from('users')
-    .insert({
+    .upsert({
       "id":supabase.auth.currentUser!.id,
       "name": name,
       "email" : email
