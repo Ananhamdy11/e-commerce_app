@@ -21,9 +21,11 @@ final class SignUpFailure extends AuthentacationState {
 }
 final class GoogleSignInLoading extends AuthentacationState {}
 final class GoogleSignInSuccess extends AuthentacationState {}
-final class GoogleSignInFailure extends AuthentacationState {
+final class GoogleSignInFailure extends AuthentacationState {}
 
+final class LogOutLoading extends AuthentacationState{}
+final class LogOutSuccess extends AuthentacationState{}
+final class LogOutFailure extends AuthentacationState{}
 
-}
 
 

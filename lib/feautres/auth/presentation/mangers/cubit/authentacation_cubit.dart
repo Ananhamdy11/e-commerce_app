@@ -173,5 +173,15 @@ Future<AuthResponse> googleSignIn() async {
     return response;
   }
 
+Future<void> signOut() async {
+  emit(LogOutLoading());
+  try {
+    await supabase.auth.signOut();
+    emit(LogOutSuccess());
+  } catch (e) {
+    log(e.toString());
+    emit(LogOutFailure());
+  }
 
+}
 }
