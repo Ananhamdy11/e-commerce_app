@@ -96,7 +96,10 @@
 
 //  import 'dart:math';
 
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'authentacation_state.dart';
@@ -111,12 +114,12 @@ class AuthentacationCubit extends Cubit<AuthentacationState> {
       await supabase.auth.signInWithPassword(password: password, email: email);
       emit(LoginSuccess());
     } on AuthApiException catch (e) {
-      print(e.toString());
+      log(e.toString());
       emit(LoginFailure(e.message));
       
     }catch (e){
       emit(LoginFailure(e.toString()));
-      print(e.toString());
+      log(e.toString());
 
     }
 
@@ -128,15 +131,46 @@ class AuthentacationCubit extends Cubit<AuthentacationState> {
       await supabase.auth.signUp(password: password, email: email);
       emit(SignUpSuccess());
     } on AuthApiException catch (e) {
-      print(e.toString());
+      log(e.toString());
       emit(SignUpFailure(e.message));
       
     }catch (e){
       emit(SignUpFailure(e.toString()));
-      print(e.toString());
+      log(e.toString());
 
     }
 
+  }
+
+  GoogleSignInAccount? googleUser;
+Future<AuthResponse> googleSignIn() async {
+  emit(GoogleSignInLoading());
+    const webClientId = '185662925378-60il6jkod2ahdarsuln896513l09r6d1.apps.googleusercontent.com';
+
+
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+      serverClientId: webClientId,
+    );
+     googleUser = await googleSignIn.signIn();
+     if (googleUser == null) {
+      return AuthResponse();
+     }
+    final googleAuth = await googleUser!.authentication;
+    final accessToken = googleAuth.accessToken;
+    final idToken = googleAuth.idToken;
+
+    if (accessToken == null || idToken == null) {
+      emit(GoogleSignInFailure());
+      return AuthResponse();      
+    }
+  
+    AuthResponse response =await supabase.auth.signInWithIdToken(
+      provider: OAuthProvider.google,
+      idToken: idToken,
+      accessToken: accessToken,
+    );
+    emit(GoogleSignInSuccess());
+    return response;
   }
 
 

@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/show_msg.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
-import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_row_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/main_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,11 +28,11 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   Widget build(BuildContext context) {
    return BlocConsumer<AuthentacationCubit, AuthentacationState>(
     listener: (context, state) {
-      if(state is SignUpSuccess){
+      if(state is SignUpSuccess || state is GoogleSignInSuccess){
         showMsg(context, 'SignUp Success');
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LoginView()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const MainHomeView()));
       }if (state is SignUpFailure) {
-        print(state.message);
+         log(state.message);
          showMsg(context, state.message);
       }
     },
@@ -87,7 +89,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   cubit.signup(name: nameController.text, email: emailController.text, password: passwordController.text);
                 }
                },),
-               CustomRowButton(text: 'SignUp With Goagle ',onTap: (){},),
+               CustomRowButton(text: 'SignUp With Google ',onTap: (){
+                cubit.googleSignIn();
+               },),
                         Row(
                 mainAxisAlignment: MainAxisAlignment.center, 
                 children: [

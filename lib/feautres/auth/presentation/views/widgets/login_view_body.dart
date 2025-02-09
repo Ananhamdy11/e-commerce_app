@@ -28,7 +28,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
    return BlocConsumer<AuthentacationCubit, AuthentacationState>(
      listener: (context, state) {
-       if(state is LoginSuccess){
+       if(state is LoginSuccess || state is GoogleSignInSuccess){
         showMsg(context, 'Login Success');
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const MainHomeView()));
       }
@@ -101,7 +101,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                    cubit.login(email: emailController.text, password: passwordController.text);
                  }
                 },),
-                CustomRowButton(text: 'Login With Goagle ',onTap: (){},),
+                CustomRowButton(text: 'Login With Google ',onTap: (){
+                  cubit.googleSignIn();
+                },),
                 Row(
                  mainAxisAlignment: MainAxisAlignment.center, 
                  children: [

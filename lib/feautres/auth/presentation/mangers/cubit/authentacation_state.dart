@@ -19,3 +19,11 @@ final class SignUpFailure extends AuthentacationState {
 
   SignUpFailure(this.message);
 }
+final class GoogleSignInLoading extends AuthentacationState {}
+final class GoogleSignInSuccess extends AuthentacationState {}
+final class GoogleSignInFailure extends AuthentacationState {
+
+
+}
+
+

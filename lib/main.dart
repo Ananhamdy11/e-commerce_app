@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/core/helper/my_observer.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/main_home_view.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
     anonKey:
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzem9xeWVucHpuZWJjbWhubWdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg5NjEwNTIsImV4cCI6MjA1NDUzNzA1Mn0.RC6-JdeZcJeU5UnpnXvnazTOuzeYP4iuWzfytd6CaCY",
   );
+  Bloc.observer=MyObserver();
   runApp(const EcommerceApp());
 }
 
@@ -33,7 +35,9 @@ class EcommerceApp extends StatelessWidget {
             scaffoldBackgroundColor: AppColors.kScaffoldColor,
             useMaterial3: true,
           ),
-          home:supabase.auth.currentUser !=null? const MainHomeView(): const LoginView()),
+          home: supabase.auth.currentUser !=null? const MainHomeView(): const LoginView()),
+
+       
     );
   }
 }
