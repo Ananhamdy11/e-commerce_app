@@ -27,5 +27,9 @@ final class LogOutLoading extends AuthentacationState{}
 final class LogOutSuccess extends AuthentacationState{}
 final class LogOutFailure extends AuthentacationState{}
 
+final class ResetPasswordLoading extends AuthentacationState{}
+final class ResetPasswordSuccess extends AuthentacationState{}
+final class ResetPasswordFailure extends AuthentacationState{}
+
 
 

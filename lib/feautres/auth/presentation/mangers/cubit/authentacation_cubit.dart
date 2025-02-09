@@ -182,6 +182,19 @@ Future<void> signOut() async {
     log(e.toString());
     emit(LogOutFailure());
   }
-
 }
+
+Future<void> resetPassword({required String email}) async{
+  emit(ResetPasswordLoading());
+  try {
+    await supabase.auth.resetPasswordForEmail(email);
+    emit(ResetPasswordSuccess());
+  } catch (e) {
+    log(e.toString());
+    emit(ResetPasswordFailure());
+  } 
+ 
+}
+
+
 }
