@@ -15,7 +15,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthentacationCubit()..GetUserData(),
+      create: (context) => AuthentacationCubit()..getuserdata(),
       child: BlocConsumer<AuthentacationCubit, AuthentacationState>(
         listener: (context, state) {
           if(state is LogOutSuccess){

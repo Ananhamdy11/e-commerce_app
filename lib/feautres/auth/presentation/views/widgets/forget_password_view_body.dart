@@ -27,7 +27,7 @@ final TextEditingController emailController = TextEditingController();
         }
       },
       builder: (context, state) {
-        return state is ResetPasswordLoading ? Center(child: CircularProgressIndicator(),) : SafeArea(
+        return state is ResetPasswordLoading ? const Center(child: CircularProgressIndicator(),) : SafeArea(
         child: Form(
           key: _formkey,
           child: Column(

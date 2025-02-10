@@ -15,7 +15,7 @@ class AuthentacationCubit extends Cubit<AuthentacationState> {
     emit(LoginLoading());
     try {
       await supabase.auth.signInWithPassword(password: password, email: email);
-      await GetUserData();
+      await getuserdata();
       emit(LoginSuccess());
     } on AuthApiException catch (e) {
       log(e.toString());
@@ -34,7 +34,7 @@ class AuthentacationCubit extends Cubit<AuthentacationState> {
     try {
       await supabase.auth.signUp(password: password, email: email);
       await addUserData(name: name, email: email);
-      await GetUserData();
+      await getuserdata();
       emit(SignUpSuccess());
     } on AuthApiException catch (e) {
       log(e.toString());
@@ -76,7 +76,7 @@ Future<AuthResponse> googleSignIn() async {
       accessToken: accessToken,
     );
     await addUserData(name: googleUser!.displayName!, email: googleUser!.email);
-    await GetUserData();
+    await getuserdata();
     emit(GoogleSignInSuccess());
     return response;
   }
@@ -123,7 +123,7 @@ Future<void> addUserData({required String name, required String email })async{
 }
 UserDataModel? userDataModel;
 
-Future<void> GetUserData()async{
+Future<void> getuserdata()async{
 emit(GetUserDataLoading());
 try {
   final data = await supabase
