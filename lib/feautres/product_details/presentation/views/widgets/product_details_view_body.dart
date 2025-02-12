@@ -56,7 +56,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                             )
                           ],
                         ),
-                        Icon(
+                        const Icon(
                           Icons.favorite,
                           color: AppColors.kGreyColor,
                         )
@@ -70,7 +70,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                       height: 20,
                     ),
                     RatingBar.builder(
-                      initialRating: 3,
+                      initialRating: cubit.userRate.toDouble(),
                       minRating: 1,
                       direction: Axis.horizontal,
                       allowHalfRating: false,
