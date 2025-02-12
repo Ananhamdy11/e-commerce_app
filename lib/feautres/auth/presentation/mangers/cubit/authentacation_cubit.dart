@@ -123,21 +123,46 @@ Future<void> addUserData({required String name, required String email })async{
 }
 UserDataModel? userDataModel;
 
-Future<void> getuserdata()async{
-emit(GetUserDataLoading());
-try {
-  final data = await supabase
-  .from('users')
-  .select().eq("id", supabase.auth.currentUser!.id);
-  userDataModel = UserDataModel(userId: data[0]["id"], name: data[0]["name"], email: data[0]["email"]);
-  log(data.toString());
-  emit(GetUserDataSuccess());
+Future<void> getuserdata() async {
+  emit(GetUserDataLoading());
+  try {
+    final data = await supabase
+      .from('users')
+      .select()
+      .eq("id", supabase.auth.currentUser!.id);
 
-} catch (e) {
-  log(e.toString());
-  emit(GetUserDataFailure());
+    if (data.isEmpty) {
+      emit(GetUserDataFailure());
+      return;
+    }
+
+    userDataModel = UserDataModel(
+      userId: data[0]["id"],
+      name: data[0]["name"],
+      email: data[0]["email"],
+    );
+    emit(GetUserDataSuccess());
+  } catch (e) {
+    log(e.toString());
+    emit(GetUserDataFailure());
+  }
 }
-}
+
+// Future<void> getuserdata()async{
+// emit(GetUserDataLoading());
+// try {
+//   final data = await supabase
+//   .from('users')
+//   .select().eq("id", supabase.auth.currentUser!.id);
+//   userDataModel = UserDataModel(userId: data[0]["id"], name: data[0]["name"], email: data[0]["email"]);
+//   log(data.toString());
+//   emit(GetUserDataSuccess());
+
+// } catch (e) {
+//   log(e.toString());
+//   emit(GetUserDataFailure());
+// }
+// }
  
 
 }
