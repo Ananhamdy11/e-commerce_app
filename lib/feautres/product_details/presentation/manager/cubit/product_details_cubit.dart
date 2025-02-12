@@ -21,15 +21,27 @@ Future<void> getRates({required String productId})async{
   try {
     Response response =await _apiServices.getData("rates_table?select=*&for_product=eq.$productId");
     for (var rate in response.data) {
-      rates.add(RateModel.fromJson(rate));
-      
+      rates.add(RateModel.fromJson(rate)); 
     }
+    _getAverageRate();
+
+    // log(rates.length.toString());
     emit(GetRateSuccess());
   } catch (e) {
     log(e.toString());
     emit(GetRateErorr());
     
   }
+}
+
+void _getAverageRate() {
+   for (var userRate in rates) {
+    // ignore: unrelated_type_equality_checks
+    if (userRate == 0) {
+  averageRate +=userRate.rate!;
+    }      
+  }
+      averageRate = (averageRate/rates.length).toInt();
 }
 
 
