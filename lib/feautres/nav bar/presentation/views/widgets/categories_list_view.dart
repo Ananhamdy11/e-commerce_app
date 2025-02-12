@@ -9,9 +9,9 @@ class CategoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-     height: 100,
+      height: 100,
       child: ListView.builder(
-       scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
@@ -19,36 +19,36 @@ class CategoriesList extends StatelessWidget {
             child: Column(
               children: [
                 CircleAvatar(
-                 radius: 30,
-                
-                 backgroundColor: AppColors.kPrimaryColor,
-                  child: Icon(categories[index].icon,color: AppColors.kWhiteColor,size: 40,),
+                  radius: 30,
+                  backgroundColor: AppColors.kPrimaryColor,
+                  child: Icon(
+                    categories[index].icon,
+                    color: AppColors.kWhiteColor,
+                    size: 40,
+                  ),
                 ),
                 Text(categories[index].title),
               ],
             ),
-            
-          )  ;
+          );
         },
       ),
     );
   }
 }
 
-List <Category> categories = [
+List<Category> categories = [
   Category(icon: Icons.sports, title: 'Sports'),
   Category(icon: Icons.tv, title: 'Electronics'),
   Category(icon: Icons.collections, title: 'Collections'),
   Category(icon: Icons.book, title: 'Books'),
   Category(icon: Icons.games, title: 'Games'),
   Category(icon: Icons.bike_scooter, title: 'Bikes'),
-
 ];
-class Category{
 
+class Category {
   final IconData icon;
   final String title;
 
   Category({required this.icon, required this.title});
-
 }

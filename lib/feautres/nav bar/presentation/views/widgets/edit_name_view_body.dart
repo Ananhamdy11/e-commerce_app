@@ -16,19 +16,23 @@ class EditNameViewBody extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const CustomTextField(label: 'Enter Name', keyboardType: TextInputType.name),
-            const SizedBox(height: 20,),
-            CustomEVB(onTap: (){
-              navigatorTo(context, const ProfileView());
-            }, widget: const Text('Update ',style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold
-            ),))
-            
+            const CustomTextField(
+                label: 'Enter Name', keyboardType: TextInputType.name),
+            const SizedBox(
+              height: 20,
+            ),
+            CustomEVB(
+                onTap: () {
+                  navigatorTo(context, const ProfileView());
+                },
+                widget: const Text(
+                  'Update ',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ))
           ],
         ),
       ),
     );
   }
-
 }

@@ -6,25 +6,22 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Padding(
-      padding:const EdgeInsets.all(10.0),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
       child: ListView(
-        children:const [
-           Center(
-             child: Text('Your Favorite Products ',
-                       style:TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold
-                       
-                       ) ,
-                       ),
-           ),
-           SizedBox(height:20 ,),
-           ProductList()
-
+        children: const [
+          Center(
+            child: Text(
+              'Your Favorite Products ',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ProductList()
         ],
       ),
-      );
- 
+    );
   }
 }

@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
-    super.key, this.onTap, required this.text,
+    super.key,
+    this.onTap,
+    required this.text,
   });
-final void Function()? onTap;
-final String text;
+  final void Function()? onTap;
+  final String text;
   @override
   Widget build(BuildContext context) {
-    return  InkWell(
+    return InkWell(
       onTap: onTap,
       child: Text(
-        text ,
+        text,
         style: const TextStyle(
-          color: AppColors.kPrimaryColor,
-          fontSize: 18,
-          fontWeight: FontWeight.bold
-        ),
-       
+            color: AppColors.kPrimaryColor,
+            fontSize: 18,
+            fontWeight: FontWeight.bold),
       ),
     );
   }

@@ -15,8 +15,8 @@ class UserCommentsListView extends StatelessWidget {
         return ListTile(
           key: ValueKey(index),
           title: const Text('User Name'),
-          subtitle: const  Text('Comment'),
-        ) ;
+          subtitle: const Text('Comment'),
+        );
       },
       separatorBuilder: (BuildContext context, int index) {
         return const Divider();

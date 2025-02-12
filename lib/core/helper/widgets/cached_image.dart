@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 
 class CachednetworkImage extends StatelessWidget {
   const CachednetworkImage({
-    super.key, required this.url,
+    super.key,
+    required this.url,
   });
-final String url;
+  final String url;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl:url,
+      imageUrl: url,
       fit: BoxFit.cover,
       height: 250,
       width: double.infinity,
@@ -21,10 +22,8 @@ final String url;
             color: AppColors.kPrimaryColor,
           ),
         ),
-        
       ),
-      errorWidget: (context, url, error) =>const Icon(Icons.error),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }
-

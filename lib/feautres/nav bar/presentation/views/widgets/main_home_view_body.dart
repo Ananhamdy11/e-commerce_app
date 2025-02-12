@@ -5,12 +5,12 @@ class MainHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const SafeArea(
+    return const SafeArea(
       child: Padding(
-        padding:  EdgeInsets.all(20),
+        padding: EdgeInsets.all(20),
         child: SizedBox(
-          child:  Text('Test View'),
-        ) ,
+          child: Text('Test View'),
+        ),
       ),
     );
   }

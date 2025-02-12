@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_app/core/helper/widgets/product_list.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/categories_list_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_search_field.dart';
@@ -34,21 +33,16 @@ class HomeView extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-         const Text(
+          const Text(
             'Recently Products ',
             style: TextStyle(
               fontSize: 20,
             ),
           ),
-          const SizedBox(
-            height: 15
-          ),
-         const ProductList(),
+          const SizedBox(height: 15),
+          const ProductList(),
         ],
       ),
     );
   }
 }
-
-
-

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class CustomEVB extends StatelessWidget {
   const CustomEVB({
     super.key,
-    required this.onTap, required this.widget,
+    required this.onTap,
+    required this.widget,
   });
 
   final void Function()? onTap;
@@ -12,14 +13,12 @@ class CustomEVB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed:onTap,
-    style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.kPrimaryColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16)
-      )
-    ),
-     child: widget
-     );
+    return ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.kPrimaryColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16))),
+        child: widget);
   }
 }

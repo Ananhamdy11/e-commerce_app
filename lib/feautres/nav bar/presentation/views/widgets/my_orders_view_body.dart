@@ -7,12 +7,14 @@ class MyOrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold
-    (
+    return Scaffold(
       appBar: buildCustomAppBar(context, 'My Orders'),
-      body:  const Padding(
-        padding:  EdgeInsets.all(8.0),
-        child: ProductList(shrinkWrap: false,physics: BouncingScrollPhysics(),),
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: ProductList(
+          shrinkWrap: false,
+          physics: BouncingScrollPhysics(),
+        ),
       ),
     );
   }

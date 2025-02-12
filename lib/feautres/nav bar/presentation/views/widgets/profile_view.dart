@@ -17,88 +17,82 @@ class ProfileView extends StatelessWidget {
       create: (context) => AuthentacationCubit()..getuserdata(),
       child: BlocConsumer<AuthentacationCubit, AuthentacationState>(
         listener: (context, state) {
-          if(state is LogOutSuccess){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LoginView()));
+          if (state is LogOutSuccess) {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const LoginView()));
           }
         },
         builder: (context, state) {
-  final authCubit = context.watch<AuthentacationCubit>();
-  final userDataModel = authCubit.userDataModel;
+          final authCubit = context.watch<AuthentacationCubit>();
+          final userDataModel = authCubit.userDataModel;
 
-  if (state is LogOutLoading || state is GetUserDataLoading) {
-    return const Center(child: CircularProgressIndicator());
-  }
+          if (state is LogOutLoading || state is GetUserDataLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-  if (userDataModel == null) {
-    return const Center(child: Text('No user data available'));
-  }
+          if (userDataModel == null) {
+            return const Center(child: Text('No user data available'));
+          }
 
-  return Center(
-    child: SizedBox(
-      height: MediaQuery.of(context).size.height * 0.7,
-      child: Card(
-        margin: const EdgeInsets.all(20),
-        color: AppColors.kWhiteColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CircleAvatar(
-                radius: 50,
-                backgroundColor: AppColors.kPrimaryColor,
-                foregroundColor: AppColors.kWhiteColor,
-                child: Icon(Icons.person, size: 50),
+          return Center(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: Card(
+                margin: const EdgeInsets.all(20),
+                color: AppColors.kWhiteColor,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 50,
+                        backgroundColor: AppColors.kPrimaryColor,
+                        foregroundColor: AppColors.kWhiteColor,
+                        child: Icon(Icons.person, size: 50),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        userDataModel.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(userDataModel.email),
+                      const SizedBox(height: 10),
+                      CustomCardRowButton(
+                        icon: Icons.person,
+                        text: 'Edit Name',
+                        onTap: () {
+                          navigatorTo(context, const EditNameViewBody());
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      CustomCardRowButton(
+                        icon: Icons.shopping_basket,
+                        text: 'My Orders',
+                        onTap: () {
+                          navigatorTo(context, const MyOrdersViewBody());
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      CustomCardRowButton(
+                        icon: Icons.logout,
+                        text: 'Logout',
+                        onTap: () async {
+                          await context.read<AuthentacationCubit>().signOut();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              const SizedBox(height: 10),
-              Text(
-              
-               userDataModel.name,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              Text(userDataModel.email),
-              const SizedBox(height: 10),
-              CustomCardRowButton(
-                icon: Icons.person,
-                text: 'Edit Name',
-                onTap: () {
-                  navigatorTo(context, const EditNameViewBody());
-                },
-              ),
-              const SizedBox(height: 10),
-              CustomCardRowButton(
-                icon: Icons.shopping_basket,
-                text: 'My Orders',
-                onTap: () {
-                  navigatorTo(context, const MyOrdersViewBody());
-                },
-              ),
-              const SizedBox(height: 10),
-              CustomCardRowButton(
-                icon: Icons.logout,
-                text: 'Logout',
-                onTap: () async {
-                  await context.read<AuthentacationCubit>().signOut();
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-},
+            ),
+          );
+        },
       ),
     );
-    
-    
-    
-          
-    
   }
 }
-

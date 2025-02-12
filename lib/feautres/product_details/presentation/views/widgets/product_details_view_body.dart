@@ -71,26 +71,26 @@ class ProductDetailsViewBody extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-               CustomTextField(
+              CustomTextField(
                 label: 'Type Your Feedback ',
                 keyboardType: TextInputType.multiline,
-                suffixIcon: IconButton(onPressed: (){}, icon: const Icon(Icons.send),),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.send),
+                ),
               ),
-              const SizedBox(height: 15,),
-               const Row(
+              const SizedBox(
+                height: 15,
+              ),
+              const Row(
                 children: [
-                    Text(
+                  Text(
                     'Comments',
-                    style: TextStyle(
-                      fontSize: 18
-                    ),
-                    
-                  
+                    style: TextStyle(fontSize: 18),
                   ),
                 ],
               ),
-                 const UserCommentsListView(),
-
+              const UserCommentsListView(),
             ],
           ),
         )
@@ -98,5 +98,3 @@ class ProductDetailsViewBody extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,13 +1,16 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:ecommerce_app/core/helper/widgets/cached_image.dart';
 import 'package:ecommerce_app/core/helper/widgets/custom_evb.dart';
 import 'package:flutter/material.dart';
 
 class CardProuduct extends StatelessWidget {
   const CardProuduct({
-    super.key, required this.onTap,
+    super.key,
+    required this.onTap, required this.product,
   });
-final void Function() onTap;
+  final void Function() onTap;
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,13 +23,15 @@ final void Function() onTap;
           children: [
             Stack(
               children: [
-               const ClipRRect(
-                  borderRadius:  BorderRadius.only(
+                 ClipRRect(
+                  borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(16),
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
-                  child: CachednetworkImage(url:'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996' ,),
+                  child: CachednetworkImage(
+                    url: product.imageUrl?? 'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996' ,
+                  ),
                   // Image(
                   //   image: NetworkImage(
                   //       'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996'),
@@ -43,9 +48,9 @@ final void Function() onTap;
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16),
                         )),
-                    child: const Text(
-                      "10% off",
-                      style: TextStyle(
+                    child:  Text(
+                      "${product.sale}%off",
+                      style: const TextStyle(
                         color: AppColors.kWhiteColor,
                       ),
                     ),
@@ -63,9 +68,9 @@ final void Function() onTap;
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'product name ',
-                        style: TextStyle(
+                       Text(
+                        product.productName??'product name ',
+                        style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       IconButton(
@@ -78,16 +83,16 @@ final void Function() onTap;
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Column(
+                       Column(
                         children: [
                           Text(
-                            '1000 LE ',
-                            style: TextStyle(
+                            "${product.price}LE",
+                            style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '1200 LE ',
-                            style: TextStyle(
+                            "${product.oldPrice}LE",
+                            style: const TextStyle(
                                 decoration: TextDecoration.lineThrough,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.kGreyColor),
@@ -112,4 +117,3 @@ final void Function() onTap;
     );
   }
 }
-

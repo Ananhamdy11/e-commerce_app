@@ -8,26 +8,27 @@ class StoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: ListView(
-        children:const [
-           Center(
-             child: Text('Welcome to our market ',
-                       style:TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold
-                       
-                       ) ,
-                       ),
-           ),
-           SizedBox(height:20 ,),
+        children: const [
+          Center(
+            child: Text(
+              'Welcome to our market ',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           CustomSearchField(),
-           SizedBox(height:20 ,),
-           ProductList(shrinkWrap: true,)
-
+          SizedBox(
+            height: 20,
+          ),
+          ProductList(
+            shrinkWrap: true,
+          )
         ],
       ),
-      );
-  
+    );
   }
 }
