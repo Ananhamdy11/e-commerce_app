@@ -17,27 +17,25 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NavBarCubit(),
-      child: BlocConsumer<NavBarCubit, NavBarState>(listener: (context, state) {
-      }, builder: (context, state) {
-        List<ProductModel> products = context.read<NavBarCubit>().products;
+      create: (context) => NavBarCubit()..getproducts(),
+      child: BlocConsumer<NavBarCubit, NavBarState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            List<ProductModel> products = context.read<NavBarCubit>().products;
 
-        return state is GetDataLoading
-            ? const CircularProgressIndicator()
-            : ListView.builder(
-                shrinkWrap: shrinkWrap ?? true,
-                physics: physics ?? const NeverScrollableScrollPhysics(),
-                itemCount: products.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return CardProuduct(
-                    product: products[index],
-                    onTap: () {
-                      navigatorTo(context, const ProductDetailsView());
+            return state is GetDataLoading
+                ? const CircularProgressIndicator()
+                : ListView.builder(
+                    shrinkWrap: shrinkWrap ?? true,
+                    physics: physics ?? const NeverScrollableScrollPhysics(),
+                    itemCount: products.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CardProuduct(
+                        product: products[index],
+                      );
                     },
                   );
-                },
-              );
-      }),
+          }),
     );
   }
 }

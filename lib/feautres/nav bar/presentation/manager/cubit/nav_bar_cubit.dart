@@ -22,6 +22,7 @@ class NavBarCubit extends Cubit<NavBarState> {
     try {
       var response = await apiServices.getData(
           'product_table?select=*,favorite_products(*),purchase_table(*)');
+      log("API Response: ${response.data}"); // Log the response data
       for (var product in response.data) {
         products.add(ProductModel.fromJson(product));
       }

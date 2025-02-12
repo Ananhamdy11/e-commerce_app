@@ -4,7 +4,7 @@ import 'package:ecommerce_app/core/sensitive_data.dart';
 class ApiServices {
   final Dio _dio = Dio(BaseOptions(
       baseUrl: "https://bszoqyenpznebcmhnmge.supabase.co/rest/v1/",
-      headers: {"apiKey": anonKey}));
+      headers: {"apikey": anonKey}));
 
   Future<Response> getData(String path) async {
     return await _dio.get(path);

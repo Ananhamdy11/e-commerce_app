@@ -2,19 +2,26 @@ import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:ecommerce_app/core/helper/widgets/cached_image.dart';
 import 'package:ecommerce_app/core/helper/widgets/custom_evb.dart';
+import 'package:ecommerce_app/feautres/product_details/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 
 class CardProuduct extends StatelessWidget {
   const CardProuduct({
     super.key,
-    required this.onTap, required this.product,
+    required this.product,
   });
-  final void Function() onTap;
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        navigatorTo(
+            context,
+            ProductDetailsView(
+              productModel: product,
+            ));
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -23,14 +30,15 @@ class CardProuduct extends StatelessWidget {
           children: [
             Stack(
               children: [
-                 ClipRRect(
+                ClipRRect(
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(16),
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
                   child: CachednetworkImage(
-                    url: product.imageUrl?? 'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996' ,
+                    url: product.imageUrl ??
+                        'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996',
                   ),
                   // Image(
                   //   image: NetworkImage(
@@ -48,8 +56,8 @@ class CardProuduct extends StatelessWidget {
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16),
                         )),
-                    child:  Text(
-                      "${product.sale}%off",
+                    child: Text(
+                      "${product.sale}off",
                       style: const TextStyle(
                         color: AppColors.kWhiteColor,
                       ),
@@ -68,8 +76,8 @@ class CardProuduct extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text(
-                        product.productName??'product name ',
+                      Text(
+                        product.productName ?? 'product name ',
                         style: const TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
@@ -83,7 +91,7 @@ class CardProuduct extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Column(
+                      Column(
                         children: [
                           Text(
                             "${product.price}LE",

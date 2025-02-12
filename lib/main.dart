@@ -34,9 +34,9 @@ class EcommerceApp extends StatelessWidget {
             scaffoldBackgroundColor: AppColors.kScaffoldColor,
             useMaterial3: true,
           ),
-          home:
-               supabase.auth.currentUser !=null? const MainHomeView():
-              const LoginView()),
+          home: supabase.auth.currentUser != null
+              ? const MainHomeView()
+              : const LoginView()),
     );
   }
 }

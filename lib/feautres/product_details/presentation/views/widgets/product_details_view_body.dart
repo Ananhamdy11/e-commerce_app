@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:ecommerce_app/core/helper/widgets/cached_image.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:ecommerce_app/feautres/product_details/presentation/views/widgets/user_comments_list_view.dart';
@@ -8,22 +9,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
-  const ProductDetailsViewBody({super.key});
+  const ProductDetailsViewBody({super.key, required this.productModel});
 
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const CachednetworkImage(
-            url:
+        CachednetworkImage(
+            url: productModel.imageUrl ??
                 'https://img.freepik.com/premium-psd/isolated-smart-tv-monitor-home-office-entertainment_92267-199.jpg?w=996'),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
           child: Column(
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('books'), Text('200\$')],
+                children: [
+                  Text(productModel.productName!),
+                  Text('${productModel.price}LE')
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -49,7 +54,7 @@ class ProductDetailsViewBody extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const Text('Product description'),
+              Text(productModel.description ?? 'Product description'),
               const SizedBox(
                 height: 20,
               ),
