@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:ecommerce_app/core/helper/widgets/cached_image.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:ecommerce_app/feautres/product_details/presentation/manager/cubit/product_details_cubit.dart';
+import 'package:ecommerce_app/feautres/product_details/presentation/views/product_details_view.dart';
 import 'package:ecommerce_app/feautres/product_details/presentation/views/widgets/user_comments_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,10 +22,16 @@ class ProductDetailsViewBody extends StatelessWidget {
           ProductDetailsCubit()..getRates(productId: productModel.productId!),
       child: BlocConsumer<ProductDetailsCubit, ProductDetailsState>(
         listener: (context, state) {
+          if(state is AddOrUpdateRateSuccess){
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) =>  ProductDetailsView(productModel: productModel,)
+            ));
+
+          }
         },
         builder: (context, state) {
           ProductDetailsCubit cubit=context.read<ProductDetailsCubit>();
-          return state is GetRateLoading ? const CircularProgressIndicator() : ListView(
+          return state is GetRateLoading ? const Center(child:  CircularProgressIndicator()) : ListView(
             children: [
               CachednetworkImage(
                   url: productModel.imageUrl ??
@@ -81,7 +88,13 @@ class ProductDetailsViewBody extends StatelessWidget {
                         color: Colors.amber,
                       ),
                       onRatingUpdate: (rating) {
-                        log(rating);
+                        cubit.addOrUpdateUserRate(productId: productModel.productId!, data: 
+                        {
+                          "rate": rating.toInt(),
+                          "for_user": cubit.userId,
+                          "for_product":productModel.productId
+                        }
+                        );
                       },
                     ),
                     const SizedBox(

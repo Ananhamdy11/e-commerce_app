@@ -55,7 +55,9 @@ void _getAverageRate() {
   averageRate +=userRate.rate!;
     }      
   }
-      averageRate = (averageRate/rates.length).toInt();
+      if (rates.isNotEmpty) {
+  averageRate = (averageRate/rates.length).toInt();
+}
  }
  bool _isUserRateExist({ required String productId }){
   for (var user_rate in rates) {
