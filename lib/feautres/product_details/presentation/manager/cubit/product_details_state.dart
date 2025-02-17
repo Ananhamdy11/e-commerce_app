@@ -18,3 +18,8 @@ final class GetRateErorr extends ProductDetailsState {}
 final class AddOrUpdateRateLoading extends ProductDetailsState {}
 final class AddOrUpdateRateSuccess extends ProductDetailsState {}
 final class AddOrUpdateRateFailure extends ProductDetailsState {}
+
+
+final class AddCommentsLoading extends ProductDetailsState {}
+final class AddCommentsSuccess extends ProductDetailsState {}
+final class AddCommentsFailure extends ProductDetailsState {}

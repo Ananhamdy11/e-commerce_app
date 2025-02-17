@@ -87,6 +87,18 @@ void _getAverageRate() {
   emit(AddOrUpdateRateFailure());
 }
  }
+Future<void> addComments({required Map<String,dynamic> data })async{
+  emit(AddCommentsLoading());
+  try {
+    await _apiServices.postData("comments_table", data);
+    emit(AddCommentsSuccess());
+  } catch (e) {
+    log(e.toString());
+    emit(AddCommentsFailure());
+    
+  }
+
+}
 
 }
 

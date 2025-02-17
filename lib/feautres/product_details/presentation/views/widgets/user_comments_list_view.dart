@@ -12,10 +12,19 @@ class UserCommentsListView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 3,
       itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          key: ValueKey(index),
-          title: const Text('User Name'),
-          subtitle: const Text('Comment'),
+        return Column(
+          children: [
+            ListTile(
+              key: ValueKey(index),
+              title: const Text('User Name'),
+              subtitle: const Text('Comment'),
+            ),
+            ListTile(
+              key: ValueKey(index),
+              title: const Text('Replay..'),
+              subtitle: const Text('reply.....'),
+            ),
+          ],
         );
       },
       separatorBuilder: (BuildContext context, int index) {
