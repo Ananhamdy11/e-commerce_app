@@ -17,7 +17,9 @@ class NavBarCubit extends Cubit<NavBarState> {
 
   ApiServices apiServices = ApiServices();
   List<ProductModel> products = [];
-  Future<void> getproducts() async {
+  List<ProductModel> searchResults=[];
+
+  Future<void> getproducts({ String? query}) async {
     emit(GetDataLoading());
     try {
       var response = await apiServices.getData(
@@ -26,11 +28,25 @@ class NavBarCubit extends Cubit<NavBarState> {
       for (var product in response.data) {
         products.add(ProductModel.fromJson(product));
       }
+      search(query);
       log(response.toString());
       emit(GetDataSuccess());
     } catch (e) {
       log(e.toString());
       emit(GetDataError());
     }
+  }
+
+  void search( String? query ){
+    if (query != null) {
+      for (var product in products) {
+        if (product.productName!.toLowerCase().contains(query.toLowerCase())) {
+          searchResults.add(product);
+        }
+        
+      }
+    }
+
+
   }
 }
