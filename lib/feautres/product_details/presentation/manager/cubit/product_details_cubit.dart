@@ -60,8 +60,8 @@ void _getAverageRate() {
 }
  }
  bool _isUserRateExist({ required String productId }){
-  for (var user_rate in rates) {
-    if (user_rate.forUser==userId && user_rate.forProduct==productId) {
+  for (var userrate in rates) {
+    if (userrate.forUser==userId && userrate.forProduct==productId) {
       return true;
     }
     

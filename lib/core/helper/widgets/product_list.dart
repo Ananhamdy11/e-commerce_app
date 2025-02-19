@@ -1,8 +1,6 @@
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
-import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/manager/cubit/nav_bar_cubit.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/product_card.dart';
-import 'package:ecommerce_app/feautres/product_details/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

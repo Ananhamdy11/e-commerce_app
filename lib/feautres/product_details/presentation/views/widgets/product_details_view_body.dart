@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:ecommerce_app/core/helper/widgets/cached_image.dart';
-import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:ecommerce_app/feautres/product_details/presentation/manager/cubit/product_details_cubit.dart';
@@ -137,7 +134,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                         ),
                       ],
                     ),
-                    const UserCommentsListView(),
+                     UserCommentsListView(productModel: widget.productModel,),
                   ],
                 ),
               )
