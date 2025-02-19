@@ -119,7 +119,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
         "comment": feedbackController.text,
         "for_user": cubit.userId,
         "for_product": widget.productModel.productId,
-        "user_name":context.read<AuthentacationCubit>().userDataModel!.name 
+        "user_name":context.read<AuthentacationCubit>().userDataModel?.name ??"User Name"
     });
     feedbackController.clear();
                         },
