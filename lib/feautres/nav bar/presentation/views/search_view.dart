@@ -3,8 +3,8 @@ import 'package:ecommerce_app/core/helper/widgets/product_list.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
-  const SearchView({super.key});
-
+  const SearchView({super.key, required this.query});
+final String query;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,9 +13,11 @@ class SearchView extends StatelessWidget {
          "Search Results "
          ),
          body: ListView(
-          children:const [
+          children: [
              SizedBox(height: 20),
-            ProductList()
+            ProductList(
+              query: query,
+            )
           ],
          ),
     );

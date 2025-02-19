@@ -5,17 +5,35 @@ import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/cate
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_search_field.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: ListView(
         children: [
+          const SizedBox(height: 20),
             CustomSearchField(
-            onPressed: ()=> navigatorTo(context, const SearchView()) ,
+              searchController: searchController,
+            onPressed: (){
+              if (searchController.text.isNotEmpty) {
+                 navigatorTo
+                 (context, 
+                  SearchView(
+              query:searchController.text ,
+            )) ;
+            searchController.clear();
+                
+              }
+            }
            ),
           const SizedBox(
             height: 15,
@@ -48,5 +66,10 @@ class HomeView extends StatelessWidget {
         ],
       ),
     );
+  }
+  @override
+  void dispose(){
+    searchController.dispose();
+    super.dispose();
   }
 }
