@@ -112,6 +112,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                       keyboardType: TextInputType.multiline,
                       suffixIcon: IconButton(
                         onPressed: () async{
+                          await context.read<AuthentacationCubit>().getuserdata();
                          await cubit.addComments(data: {
         "comment": feedbackController.text,
         "for_user": cubit.userId,
