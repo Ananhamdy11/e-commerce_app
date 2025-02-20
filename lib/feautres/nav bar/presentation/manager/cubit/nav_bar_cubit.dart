@@ -66,15 +66,17 @@ class NavBarCubit extends Cubit<NavBarState> {
 
 
   }
+  Map<String,dynamic> favoriteProducts ={};
 
   Future <void> addToFavorite( String productId )async{
     emit(GetFavoriteLoading());
     try {
      await apiServices.postData("favorite_products", {
-      "is_favorite": false,
+      "is_favorite": true,
       "for_user": userId,
       "for_product": productId
       });
+      favoriteProducts.addAll({productId:true});
       emit(GetFavoriteSuccess());
     } catch (e) {
       log(e.toString());
@@ -83,7 +85,9 @@ class NavBarCubit extends Cubit<NavBarState> {
 
   }
 
-
+bool checkIsFavorite(String productId){
+return favoriteProducts.containsKey(productId);
+}
 
 
 }
