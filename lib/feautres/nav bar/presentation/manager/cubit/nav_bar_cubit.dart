@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:ecommerce_app/core/helper/api_services.dart';
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'nav_bar_state.dart';
 
@@ -18,7 +19,8 @@ class NavBarCubit extends Cubit<NavBarState> {
   ApiServices apiServices = ApiServices();
   List<ProductModel> products = [];
   List<ProductModel> searchResults=[];
-    List<ProductModel> categoryProducts=[];
+  List<ProductModel> categoryProducts=[];
+  final String userId = Supabase.instance.client.auth.currentUser!.id;
 
   Future<void> getproducts({ String? query, String? category }) async {
     emit(GetDataLoading());
@@ -62,6 +64,22 @@ class NavBarCubit extends Cubit<NavBarState> {
       }
     }
 
+
+  }
+
+  Future <void> addToFavorite( String productId )async{
+    emit(GetFavoriteLoading());
+    try {
+     await apiServices.postData("favorite_products", {
+      "is_favorite": false,
+      "for_user": userId,
+      "for_product": productId
+      });
+      emit(GetFavoriteSuccess());
+    } catch (e) {
+      log(e.toString());
+      emit(GetFavoriteError());
+    }
 
   }
 

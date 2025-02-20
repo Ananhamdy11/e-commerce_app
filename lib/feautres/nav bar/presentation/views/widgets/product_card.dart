@@ -9,9 +9,10 @@ import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 class CardProuduct extends StatelessWidget {
   const CardProuduct({
     super.key,
-    required this.product,
+    required this.product, this.onTap,
   });
   final ProductModel product;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -82,7 +83,7 @@ class CardProuduct extends StatelessWidget {
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed:onTap,
                         icon: const Icon(Icons.favorite),
                         color: AppColors.kGreyColor,
                       )

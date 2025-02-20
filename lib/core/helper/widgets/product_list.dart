@@ -21,10 +21,11 @@ class ProductList extends StatelessWidget {
       child: BlocConsumer<NavBarCubit, NavBarState>(
           listener: (context, state) {},
           builder: (context, state) {
+            NavBarCubit cubit = context.read<NavBarCubit>();
             List<ProductModel> products = query !=null ?
-            context.read<NavBarCubit>().searchResults :
-            category != null ? context.read<NavBarCubit>().categoryProducts:
-             context.read<NavBarCubit>().products;
+            cubit.searchResults :
+            category != null ? cubit.categoryProducts:
+             cubit.products;
 
             return state is GetDataLoading
                 ? const CircularProgressIndicator()
@@ -35,6 +36,9 @@ class ProductList extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return CardProuduct(
                         product: products[index],
+                        onTap: (){
+                          cubit.addToFavorite(products[index].productId!);
+                        },
                       );
                     },
                   );
