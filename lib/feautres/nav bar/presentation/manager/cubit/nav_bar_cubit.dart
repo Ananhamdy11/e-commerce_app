@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:ecommerce_app/core/helper/api_services.dart';
+import 'package:ecommerce_app/core/helper/product_model/favorite_product.dart';
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -31,6 +32,7 @@ class NavBarCubit extends Cubit<NavBarState> {
       for (var product in response.data) {
         products.add(ProductModel.fromJson(product));
       }
+      getFavoriteProducts();
       search(query);
       getProductsByCategory(category);
       log(response.toString());
@@ -102,4 +104,22 @@ Future<void> removeFavorite(String productId ) async{
   }
 }
 
+List<ProductModel> favoriteProductsList =[];
+
+void getFavoriteProducts(){
+  for (ProductModel product in products) {
+    if(product.favoriteProducts != null && product.favoriteProducts!.isNotEmpty){
+       for (FavoriteProduct favoriteProduct in product.favoriteProducts! ) {
+         if(favoriteProduct.forUser ==userId ){
+          favoriteProductsList.add(product);
+          favoriteProducts.addAll({
+            product.productId! : true
+         });
+         }
+       }
+    }
+  }
+  log(favoriteProductsList[0].productName.toString());
+}
+ 
 }
