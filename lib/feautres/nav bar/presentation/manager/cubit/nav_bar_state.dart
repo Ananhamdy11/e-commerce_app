@@ -17,3 +17,7 @@ final class GetFavoriteLoading extends NavBarState {}
 final class GetFavoriteSuccess extends NavBarState {}
 final class GetFavoriteError extends NavBarState {}
 
+final class RemoveFavoriteLoading extends NavBarState {}
+final class RemoveFavoriteSuccess extends NavBarState {}
+final class RemoveFavoriteError extends NavBarState {}
+

@@ -37,7 +37,8 @@ class ProductList extends StatelessWidget {
                       return CardProuduct(
                         product: products[index],
                         onTap: (){
-                          cubit.addToFavorite(products[index].productId!);
+                          bool isFavorite = cubit.checkIsFavorite(products[index].productId!);
+                          isFavorite? cubit.removeFavorite(products[index].productId!): cubit.addToFavorite(products[index].productId!);
                         }, isFavorite: cubit.checkIsFavorite(products[index].productId!),
                       );
                     },
