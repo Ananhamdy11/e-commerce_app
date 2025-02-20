@@ -8,19 +8,23 @@ class ProductList extends StatelessWidget {
   const ProductList({
     super.key,
     this.shrinkWrap,
-    this.physics, this.query,
+    this.physics, this.query, this.category,
   });
   final String? query;
+  final String? category;
   final bool? shrinkWrap;
   final ScrollPhysics? physics;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NavBarCubit()..getproducts(query: query),
+      create: (context) => NavBarCubit()..getproducts(query: query,category: category),
       child: BlocConsumer<NavBarCubit, NavBarState>(
           listener: (context, state) {},
           builder: (context, state) {
-            List<ProductModel> products = query !=null ?context.read<NavBarCubit>().searchResults : context.read<NavBarCubit>().products;
+            List<ProductModel> products = query !=null ?
+            context.read<NavBarCubit>().searchResults :
+            category != null ? context.read<NavBarCubit>().categoryProducts:
+             context.read<NavBarCubit>().products;
 
             return state is GetDataLoading
                 ? const CircularProgressIndicator()
