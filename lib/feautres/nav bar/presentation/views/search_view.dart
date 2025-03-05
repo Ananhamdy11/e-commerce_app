@@ -14,7 +14,7 @@ final String query;
          ),
          body: ListView(
           children: [
-             SizedBox(height: 20),
+             const SizedBox(height: 20),
             ProductList(
               query: query,
             )

@@ -117,6 +117,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
         "comment": feedbackController.text,
         "for_user": cubit.userId,
         "for_product": widget.productModel.productId,
+        // ignore: use_build_context_synchronously
         "user_name":context.read<AuthentacationCubit>().userDataModel?.name ??"User Name"
     });
     feedbackController.clear();

@@ -51,9 +51,7 @@ void _getUserRate() {
 void _getAverageRate() {
    for (var userRate in rates) {
     // ignore: unrelated_type_equality_checks
-    if (userRate != null) {
-  averageRate +=userRate.rate!;
-    }      
+  averageRate += userRate.rate!;
   }
       if (rates.isNotEmpty) {
   averageRate = (averageRate/rates.length).toInt();
