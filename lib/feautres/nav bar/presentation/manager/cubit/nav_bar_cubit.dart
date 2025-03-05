@@ -24,6 +24,10 @@ class NavBarCubit extends Cubit<NavBarState> {
   final String userId = Supabase.instance.client.auth.currentUser!.id;
 
   Future<void> getproducts({ String? query, String? category }) async {
+    products= [];
+    searchResults=[];
+    categoryProducts=[];
+    favoriteProductsList=[];
     emit(GetDataLoading());
     try {
       var response = await apiServices.getData(
@@ -78,6 +82,8 @@ class NavBarCubit extends Cubit<NavBarState> {
       "for_user": userId,
       "for_product": productId
       });
+      await getproducts();
+
       favoriteProducts.addAll({productId:true});
       emit(GetFavoriteSuccess());
     } catch (e) {
@@ -95,6 +101,7 @@ Future<void> removeFavorite(String productId ) async{
   emit(RemoveFavoriteLoading());
   try {
     await apiServices.deleteData("favorite_products?for_user=eq.$userId&for_product=eq.$productId");
+    await getproducts();
     favoriteProducts.removeWhere((key,value) => key==productId);
     emit(RemoveFavoriteSuccess());
   } catch (e) {

@@ -8,12 +8,14 @@ class ProductList extends StatelessWidget {
   const ProductList({
     super.key,
     this.shrinkWrap,
-    this.physics, this.query, this.category,
+    this.physics, this.query, this.category,  this.isFavoriteView = false,
   });
   final String? query;
   final String? category;
   final bool? shrinkWrap;
   final ScrollPhysics? physics;
+  final bool isFavoriteView;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -25,6 +27,7 @@ class ProductList extends StatelessWidget {
             List<ProductModel> products = query !=null ?
             cubit.searchResults :
             category != null ? cubit.categoryProducts:
+            isFavoriteView? cubit.favoriteProductsList:
              cubit.products;
 
             return state is GetDataLoading
@@ -46,4 +49,5 @@ class ProductList extends StatelessWidget {
           }),
     );
   }
+ 
 }
