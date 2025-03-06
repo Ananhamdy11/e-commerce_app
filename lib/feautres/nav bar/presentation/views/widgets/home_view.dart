@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 import 'package:ecommerce_app/core/helper/widgets/product_list.dart';
 import 'package:ecommerce_app/core/sensitive_data.dart';
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/search_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/categories_list_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_search_field.dart';
@@ -9,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:pay_with_paymob/pay_with_paymob.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  const HomeView({super.key, required this.userDataModel});
+  final UserDataModel userDataModel;
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -28,10 +30,9 @@ class _HomeViewState extends State<HomeView> {
 
   // Optional User Data
   userData: UserData(
-    email: "User Email", // Optional: Defaults to 'NA'
-    phone: "User Phone", // Optional: Defaults to 'NA'
-    name: "User First Name", // Optional: Defaults to 'NA'
-    lastName: "User Last Name", // Optional: Defaults to 'NA'
+    email: widget.userDataModel.email, // Optional: Defaults to 'NA'
+    name: widget.userDataModel.name, // Optional: Defaults to 'NA'
+    // lastName: "User Last Name", // Optional: Defaults to 'NA'
   ),
   
   //Optional Style Customizations

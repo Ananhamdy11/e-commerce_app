@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/app_colors.dart';
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/manager/cubit/nav_bar_cubit.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/favorite_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/home_view.dart';
@@ -8,14 +9,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class MainHomeView extends StatelessWidget {
-  const MainHomeView({super.key});
-  final List<Widget> views = const [
-    HomeView(),
-    StoreView(),
-    FavoriteView(),
-    ProfileView(),
+class MainHomeView extends StatefulWidget {
+   MainHomeView({super.key, required this.userDataModel});
+  final UserDataModel userDataModel;
+
+  @override
+  State<MainHomeView> createState() => _MainHomeViewState();
+}
+
+
+class _MainHomeViewState extends State<MainHomeView> {
+  late List<Widget> views;
+  void initState(){
+ views =  [
+    HomeView(userDataModel: widget.userDataModel,),
+    const StoreView(),
+    const FavoriteView(),
+    const ProfileView(),
   ];
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

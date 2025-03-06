@@ -26,7 +26,7 @@ class EcommerceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final supabase = Supabase.instance.client;
     return BlocProvider(
-      create: (context) => AuthentacationCubit(),
+      create: (context) => AuthentacationCubit()..getuserdata(),
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
@@ -35,7 +35,9 @@ class EcommerceApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: supabase.auth.currentUser != null
-              ? const MainHomeView()
+              ?  MainHomeView(
+                userDataModel: context.read<AuthentacationCubit>().userDataModel!,
+              )
               : const LoginView()),
     );
   }
