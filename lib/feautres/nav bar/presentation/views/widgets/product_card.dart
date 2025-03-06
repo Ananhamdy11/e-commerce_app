@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
 import 'package:ecommerce_app/core/helper/widgets/cached_image.dart';
@@ -5,6 +7,7 @@ import 'package:ecommerce_app/core/helper/widgets/custom_evb.dart';
 import 'package:ecommerce_app/feautres/product_details/presentation/views/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
+import 'package:pay_with_paymob/pay_with_paymob.dart';
 
 class CardProuduct extends StatelessWidget {
   const CardProuduct({
@@ -112,7 +115,24 @@ class CardProuduct extends StatelessWidget {
                         ],
                       ),
                       CustomEVB(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => PaymentView(
+      onPaymentSuccess: () {
+        log("payment success");
+        // Handle payment success
+      },
+      onPaymentError: () {
+         log("payment failure");
+        // Handle payment failure
+      },
+      price: double.parse(product.price!) // Required: Total price (e.g., 100 for 100 EGP)
+    ),
+  ),
+);
+                        },
                         widget: const Text(
                           'Buy Now',
                           style: TextStyle(color: AppColors.kWhiteColor),
