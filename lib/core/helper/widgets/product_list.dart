@@ -42,7 +42,10 @@ class ProductList extends StatelessWidget {
                         onTap: (){
                           bool isFavorite = cubit.checkIsFavorite(products[index].productId!);
                           isFavorite? cubit.removeFavorite(products[index].productId!): cubit.addToFavorite(products[index].productId!);
-                        }, isFavorite: cubit.checkIsFavorite(products[index].productId!),
+                        }, isFavorite: cubit.checkIsFavorite(products[index].productId!), 
+                        onpaymentSuccess: () {  
+                          
+                        },
                       );
                     },
                   );
