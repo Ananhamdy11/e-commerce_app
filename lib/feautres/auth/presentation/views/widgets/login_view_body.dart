@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
 import 'package:ecommerce_app/core/helper/widgets/show_msg.dart';
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/forget_passsword_view.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/signup_view.dart';
@@ -29,9 +30,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return BlocConsumer<AuthentacationCubit, AuthentacationState>(
       listener: (context, state) {
         if (state is LoginSuccess || state is GoogleSignInSuccess) {
+          UserDataModel userDataModel = context.read<AuthentacationCubit>().userDataModel!;
           showMsg(context, 'Login Success');
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const MainHomeView()));
+              MaterialPageRoute(builder: (context) =>  MainHomeView(userDataModel: userDataModel,)));
         }
         if (state is LoginFailure) {
           showMsg(context, state.message);
@@ -134,7 +136,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                                 CustomTextButton(
                                   text: 'Sign Up',
                                   onTap: () {
-                                    navigatorTo(context, const SignupView());
+                                    navigatorTo(context,  const SignupView());
                                   },
                                 )
                               ],

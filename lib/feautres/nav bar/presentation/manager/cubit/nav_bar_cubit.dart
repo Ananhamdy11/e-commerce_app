@@ -128,5 +128,22 @@ void getFavoriteProducts(){
   }
   log(favoriteProductsList[0].productName.toString());
 }
+Future<void> buyProduct ({required String productId}) async{
+emit(BuyProductLoading());
+try {
+  await apiServices.postData(
+    "purchase_table",
+     {
+       "is_bought": true,
+        "for_user": userId,
+        "for_product": productId
+     });
+     emit(BuyProductSuccess());
+} catch (e) {
+  log(e.toString());
+  emit(BuyProductError());
+  
+}
+}
  
 }

@@ -123,7 +123,7 @@ class CardProuduct extends StatelessWidget {
     builder: (context) => PaymentView(
       onPaymentSuccess: onpaymentSuccess,
       onPaymentError: () {
-         log("payment failure");
+        log("payment failure");
         // Handle payment failure
       },
       price: double.parse(product.price!) // Required: Total price (e.g., 100 for 100 EGP)

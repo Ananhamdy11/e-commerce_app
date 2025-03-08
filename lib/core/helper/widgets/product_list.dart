@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
+import 'package:ecommerce_app/core/helper/widgets/show_msg.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/manager/cubit/nav_bar_cubit.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,12 @@ class ProductList extends StatelessWidget {
     return BlocProvider(
       create: (context) => NavBarCubit()..getproducts(query: query,category: category),
       child: BlocConsumer<NavBarCubit, NavBarState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if(state is BuyProductSuccess){
+              
+                          showMsg(context, "Payment Success , check your orders !");
+            }
+          },
           builder: (context, state) {
             NavBarCubit cubit = context.read<NavBarCubit>();
             List<ProductModel> products = query !=null ?
@@ -43,8 +49,10 @@ class ProductList extends StatelessWidget {
                           bool isFavorite = cubit.checkIsFavorite(products[index].productId!);
                           isFavorite? cubit.removeFavorite(products[index].productId!): cubit.addToFavorite(products[index].productId!);
                         }, isFavorite: cubit.checkIsFavorite(products[index].productId!), 
-                        onpaymentSuccess: () {  
-                          
+                        onpaymentSuccess: () { 
+
+                           cubit.buyProduct(productId: products[index].productId!);
+
                         },
                       );
                     },

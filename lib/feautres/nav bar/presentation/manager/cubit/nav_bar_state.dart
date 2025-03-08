@@ -21,3 +21,7 @@ final class RemoveFavoriteLoading extends NavBarState {}
 final class RemoveFavoriteSuccess extends NavBarState {}
 final class RemoveFavoriteError extends NavBarState {}
 
+final class BuyProductLoading extends NavBarState {}
+final class BuyProductSuccess extends NavBarState {}
+final class BuyProductError extends NavBarState {}
+

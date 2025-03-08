@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/show_msg.dart';
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_row_button.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/custom_text_button.dart';
@@ -29,9 +30,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     return BlocConsumer<AuthentacationCubit, AuthentacationState>(
         listener: (context, state) {
       if (state is SignUpSuccess || state is GoogleSignInSuccess) {
+        UserDataModel userDataModel = context.read<AuthentacationCubit>().userDataModel!;
         showMsg(context, 'SignUp Success');
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const MainHomeView()));
+            MaterialPageRoute(builder: (context) =>  MainHomeView(userDataModel: userDataModel,)));
       }
       if (state is SignUpFailure) {
         log(state.message);

@@ -2,11 +2,11 @@ import 'package:ecommerce_app/feautres/auth/presentation/views/widgets/signup_vi
 import 'package:flutter/material.dart';
 
 class SignupView extends StatelessWidget {
-  const SignupView({super.key});
+  const SignupView({super.key, });
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  const Scaffold(
       body: SignupViewBody(),
     );
   }

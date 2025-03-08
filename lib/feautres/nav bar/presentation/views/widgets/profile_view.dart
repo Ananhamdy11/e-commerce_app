@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
+import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_card_row_button.dart';
@@ -9,8 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
-
+  const ProfileView({super.key,});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -19,7 +19,7 @@ class ProfileView extends StatelessWidget {
         listener: (context, state) {
           if (state is LogOutSuccess) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const LoginView()));
+                MaterialPageRoute(builder: (context) =>  const LoginView()));
           }
         },
         builder: (context, state) {
