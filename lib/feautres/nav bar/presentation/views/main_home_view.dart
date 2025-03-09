@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainHomeView extends StatefulWidget {
-   MainHomeView({super.key, required this.userDataModel});
+   const MainHomeView({super.key, required this.userDataModel});
   final UserDataModel userDataModel;
 
   @override

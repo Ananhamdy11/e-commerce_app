@@ -15,6 +15,7 @@ class CardProuduct extends StatelessWidget {
     required this.product,
     this.onTap, 
     required this.isFavorite, required this.onpaymentSuccess,
+    
   });
   final ProductModel product;
   final Function()? onTap;

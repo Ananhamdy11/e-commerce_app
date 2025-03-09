@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/my_observer.dart';
 import 'package:ecommerce_app/core/sensitive_data.dart';
-import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/main_home_view.dart';

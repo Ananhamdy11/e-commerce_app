@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/core/app_colors.dart';
 import 'package:ecommerce_app/core/helper/widgets/navigate_to.dart';
-import 'package:ecommerce_app/feautres/auth/data/user_model.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/mangers/cubit/authentacation_cubit.dart';
 import 'package:ecommerce_app/feautres/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app/feautres/nav%20bar/presentation/views/widgets/custom_card_row_button.dart';

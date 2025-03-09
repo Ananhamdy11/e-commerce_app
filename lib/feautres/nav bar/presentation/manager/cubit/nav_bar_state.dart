@@ -25,3 +25,6 @@ final class BuyProductLoading extends NavBarState {}
 final class BuyProductSuccess extends NavBarState {}
 final class BuyProductError extends NavBarState {}
 
+final class GetBoughtProductLoading extends NavBarState {}
+final class GetBoughtProductSuccess extends NavBarState {}
+final class GetBoughtProductError extends NavBarState {}

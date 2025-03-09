@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:ecommerce_app/core/helper/api_services.dart';
 import 'package:ecommerce_app/core/helper/product_model/favorite_product.dart';
 import 'package:ecommerce_app/core/helper/product_model/product_model.dart';
+import 'package:ecommerce_app/core/helper/product_model/purchase_table.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -28,6 +29,8 @@ class NavBarCubit extends Cubit<NavBarState> {
     searchResults=[];
     categoryProducts=[];
     favoriteProductsList=[];
+    userOrders=[];
+
     emit(GetDataLoading());
     try {
       var response = await apiServices.getData(
@@ -39,6 +42,7 @@ class NavBarCubit extends Cubit<NavBarState> {
       getFavoriteProducts();
       search(query);
       getProductsByCategory(category);
+      getUserOrders();
       log(response.toString());
       emit(GetDataSuccess());
     } catch (e) {
@@ -145,5 +149,19 @@ try {
   
 }
 }
- 
+ List<ProductModel> userOrders =[];
+
+ Future<void> getUserOrders()async{
+  for (ProductModel product in products) {
+    if(product.purchaseTable != null && product.purchaseTable!.isNotEmpty){
+       for (PurchaseTable purchaseTable in product.purchaseTable! ) {
+         if(purchaseTable.forUser ==userId ){
+          userOrders.add(product);
+          
+         }
+       }
+    }
+  }
+
+ }
 }
